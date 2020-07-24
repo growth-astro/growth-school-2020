@@ -79,4 +79,5 @@ When the change is made, build, and push the new image
   * Can be controlled through "[Third-party applications](Screen%20Shot%202020-07-24%20at%2011.41.49%20AM.png)" tab in settings for admins
 * How to add new TAs: add to the `TAs` at https://github.com/orgs/growth-astro-school/teams
 * How to (re)start the server to test/deploy changes
+  * For an individual look under `Control Panel` (upper right) where you can shut down/restart your server
 
