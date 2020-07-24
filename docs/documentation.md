@@ -73,7 +73,7 @@ When the change is made, build, and push the new image
   
           (base) dlakaplan@jupyter-dlakaplan:/nfs$ sudo -u admin tar xvf ~dlakaplan/growth-school-2020_Jul23.tar
 
-  * the script `link_growth_data.py` will link that to the user's directory
+  * the script [`link_growth_data.py`](../scripts/link_growth_data.py) will link that to the user's directory
 * How to add new students: add to the `Participants` at https://github.com/orgs/growth-astro-school/teams
   * The first time an admin logs in we need to grant access to the right organization 
   * Can be controlled through "[Third-party applications](Screen%20Shot%202020-07-24%20at%2011.41.49%20AM.png)" tab in settings for admins
