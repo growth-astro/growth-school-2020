@@ -1,6 +1,9 @@
-## GROWTH Summer School 2020
+## GROWTH Summer School 2020 Development
 
 ### Jupyter-Hub implementation
+
+
+**IMPORTANT NOTE FOR STUDENTS**: For instruction about the school modules, please see the README file. The documentation below is supposed to serve as support to the development team.
 
 This is what is actually happening when a user logs in and gets a server:
 
