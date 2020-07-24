@@ -31,7 +31,7 @@ This is what is actually happening when a user logs in and gets a server:
 		    sudo -E -H -u root chmod o-rwx $log_file
 		fi
 
-which actually runs the scripts [`/home/admin/start/as-user.sh`](../scripts/as-user.sh) and `/home/admin/start/as-root.sh`.
+which actually runs the scripts [`/home/admin/start/as-user.sh`](../scripts/as-user.sh) and [`/home/admin/start/as-root.sh`](../scripts/as-root.sh).
 To summarize, if you are making permanent changes (adding code), you should modify, build, and push a new Docker image. And if you are making changes to those scripts that need run on server start-up (like pulling notebooks from GitHub or making links in the user's home directory to data stored elsewhere), you should make changes to the start-up sequence by editing `as-user.sh` and `as-root.sh`. And to actually test the changes, you should stop and start your notebook server to either trigger pulling the updated Docker image or re-run the start-up scripts at https://growth.dirac.institute/hub/home or https://growth.dirac.institute/hub/admin.
 
 https://github.com/jupyter/docker-stacks/blob/master/base-notebook/start-singleuser.sh <br>
