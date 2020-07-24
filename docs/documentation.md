@@ -43,10 +43,10 @@ to make this process as hands-off as possible, I will set up the system to pull 
 ### FAQ and examples
 
 * How to update the docker to include new software?
-
-You can use `apt-get`. In the Dockerfile, add:
+  * You can use `apt-get`. In the Dockerfile, add:
 
 		RUN apt-get -y install mysoftware
+  * Then to update the docker image ???
 
 * How to update python to include new modules?
 
