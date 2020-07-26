@@ -79,34 +79,34 @@ $ pip install pyregion photutils astroplan==0.5 pytz image_registration pytest h
 
 If you don't want to install *all* the dependencies for all the modules as above right now, you can install just the ones you want for the modules you  will use:
 
-1:  Python Basics:
+1:  Python Basics:<br>
 No additional packages required
 
-2:  Image Reduction
+2:  Image Reduction<br>
 $ pip install pyregion photutils
 (Requires SExtractor and SWarp)
 
-3:  Photometry
-$ pip install photutils
+3:  Photometry<br>
+$ pip install photutils<br>
 (Requires SExtractor and PSFEx)
 
-4:  Observing Run Preparation
+4:  Observing Run Preparation<br>
 $ pip install astroplan pytz
 
-5:  Image Subtraction
-$ pip install photutils image_registration pytest
+5:  Image Subtraction<br>
+$ pip install photutils image_registration pytest<br>
 (Requires SExtractor, SWarp, PSFEx, and DS9)
 
-6:  Light Curve Analysis
+6:  Light Curve Analysis<br>
 No additional packages required
 
-7:  Spectra
+7:  Spectra <br>
+No additional packages required, but scipy >= 1.4 is required
+
+8:  X-ray Data Analysis<br>
 No additional packages required
 
-8:  X-ray Data Analysis
-No additional packages required
-
-9: Radio Data Analysis
+9: Radio Data Analysis<br>
 $ pip install emcee corner
 
 **********************************************************************
