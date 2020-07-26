@@ -1,6 +1,6 @@
 # GROWTH Astronomy School: Guide for JupyterHub users
 
-Authors: Igor Andreoni (Caltech), David Kaplan (UMW), Steven Stetzler (UW), Mario Juric (UW)
+Authors: Igor Andreoni (Caltech), David Kaplan (UWM), Steven Stetzler (UW), Mario Juric (UW)
 
 *********
 
@@ -19,9 +19,13 @@ In order to login to the Hub, start the server by clicking on this link: https:/
 *********
 ### Usage
 
-When you login into the Hub, you can navigate the folders to find the Jupyter notebook of your choice. When you open the notebook by ckicking on its name, you can edit and run it freely. 
+When you login into the Hub, you can navigate the folders to find the Jupyter notebook of your choice. When you open the notebook, you can edit and run it freely. Your edits will remain saved even when the server is stopped and re-started.
+
+* Opening and running a notebook: <br>
+Navigate to the nootebook, click on its name and you should see the notebook opening in a new tab. A guide to how to use jupyter notebooks can be found [HERE](https://jupyter.brynmawr.edu/services/public/dblank/Jupyter%20Notebook%20Users%20Manual.ipynb). Please familiarize yourself with jupyter notebooks before the school begins.
 
 * Downloading the school material: <br>
 The notebooks, the raw data, and the data products can be downloaded from the Hub to your computer at any time. On the Hub main interface, navigate to the file of interest, click on the checkbox on the left of the file name, then click the `Download` button that should have appeared on the top bar. There are other ways to download the content, too. For example, you can open the notebook you want to download, click `File`, click `Download As`, then choose a file format and download the file.  After the school finishes, you can download the school material directly from the GROWTH website: http://growth.caltech.edu/growth-school-2020.html
 
-
+* Using ds9: <br>
+During the school, you may want to visualize astronomical images using the ds9 application. To open a ds9 window, open a new desktop from the Hub main page (click on the `New` dropdown menu in the top-left corner on the page, then click on `Desktop`). A new desktop should open in a new tab. There, open a terminal and type `ds9 &` to start a new ds9 window. You can open an image from the `File` menu of the ds9 GUI, or you can open an image directly from command line by typing, for example, `ds9 growth/module_name/data/image_name.fits`
