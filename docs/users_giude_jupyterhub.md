@@ -16,6 +16,16 @@ Thanks to your GitHub account ID, the school organizers will add you to the `gro
 
 In order to login to the Hub, start the server by clicking on this link: https://growth.dirac.institute/hub/login
 
+*********
+### Getting started
+
+Upon your first login, please check that all the dependencies work correctly in your setup. Open a new terminal (`New` dropdown menu, `Terminal`), that should open in a new tab. Then run:
+
+		python growth/test_dependencies.py
+
+Please let the organizers know if any dependency gives you troubles.
+
+The school participants can familiarize themselves with jupyter notebooks using the `playground.ipynb` notebook in the `/growth/` directory.
 
 *********
 ### Usage
