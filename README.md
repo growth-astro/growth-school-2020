@@ -2,13 +2,14 @@ GROWTH School 2020
 Python Notebook README
 ********************************
 
-Authors: Cameron Hummels (Caltech) <br>
-Updated by Iva Kostadinova (Caltech), Igor Andreoni (Caltech)
+Authors: Cameron Hummels (Caltech), Igor Andreoni (Caltech) <br>
+Updated by Iva Kostadinova (Caltech) <br>
+Contact: Igor Andreoni <andreoni@caltech.edu>
 
 *************************************************
 ### Introduction
 
-These Python notebooks were developed by the GROWTH (Global Relay of Observatories Watching Transients Happen) international collaboration in astronomy for the GROWTH school series.  The notebooks you have just downloaded were used during the GROWTH online school held on August 16-18, 2020.
+These Python notebooks were developed by the GROWTH (Global Relay of Observatories Watching Transients Happen) international collaboration in astronomy for the GROWTH school series.  The notebooks were prepared for the [GROWTH online school](http://growth.caltech.edu/growth-school-2020.html) to be held on August 17-21, 2020.
 
 Each Python notebooks is accompanied by an introductory lecture given by experts in the field of  time-domain astronomy and observational followup to astrophysical transients. Each lecture and its Python notebook form a “module”. There are a total of twelve such "modules"  that were presented at the GROWTH school in 2020. 
 
