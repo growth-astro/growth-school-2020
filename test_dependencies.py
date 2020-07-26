@@ -135,7 +135,7 @@ if __name__ == '__main__':
     from astropy.stats import LombScargle
     import matplotlib.pyplot as plt
     import os
-    print("9: Lightcurve Analysis: Python Dependencies Installed Successfully")
+    print("6: Lightcurve Analysis: Python Dependencies Installed Successfully")
      
      
     # 7:  Spectroscopy
@@ -150,7 +150,7 @@ if __name__ == '__main__':
     assert python_version() >= '3.6', "Python version 3.6 or greater is required for f-strings"
     import scipy
     assert scipy.__version__ >= '1.4', "scipy version 1.4 or higher is required for this module"
-    print("8: Spectroscopy: Python Dependencies Installed Successfully")
+    print("7: Spectroscopy: Python Dependencies Installed Successfully")
     
     # 8: Xray Analysis
     from astropy.io import fits
@@ -160,7 +160,7 @@ if __name__ == '__main__':
     import scipy as sc
     import os
     import numpy.fft as fft
-    print("11: Xray Analysis: Python Dependencies Installed Successfully")
+    print("8: Xray Analysis: Python Dependencies Installed Successfully")
     
     # 9: Radio Analysis
     import numpy as np
@@ -174,7 +174,7 @@ if __name__ == '__main__':
     import matplotlib.cm as cmx
     from scipy.optimize import least_squares, curve_fit
     from scipy.stats import f
-    print("12: Radio Analysis: Python Dependencies Installed Successfully")
+    print("9: Radio Analysis: Python Dependencies Installed Successfully")
     
     # Test external program dependencies
     print("\nTesting External Dependencies")

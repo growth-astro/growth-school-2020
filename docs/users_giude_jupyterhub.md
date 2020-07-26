@@ -21,7 +21,28 @@ In order to login to the Hub, start the server by clicking on this link: https:/
 
 Upon your first login, please check that all the dependencies work correctly in your setup. Open a new terminal (`New` dropdown menu, `Terminal`), that should open in a new tab. Then run:
 
-		python growth/test_dependencies.py
+	python growth/test_dependencies.py
+
+If everything works correctly, you should see the following output:
+
+	Testing Python Dependencies
+	1: Python Basics: Python Dependencies Installed Successfully
+	2: Image Reduction: Python Dependencies Installed Successfully
+	3: Photometry: Python Dependencies Installed Successfully
+	4: Observing Run Preparation: Python Dependencies Installed Successfully
+	5: Image Subtraction: Python Dependencies Installed Successfully
+	6: Lightcurve Analysis: Python Dependencies Installed Successfully
+	7: Spectroscopy: Python Dependencies Installed Successfully
+	8: Xray Analysis: Python Dependencies Installed Successfully
+	9: Radio Analysis: Python Dependencies Installed Successfully
+
+	Testing External Dependencies
+	sextractor is installed properly as sextractor. OK
+	SWarp is installed properly as SWarp. OK
+	psfex is installed properly as psfex. OK
+	ds9 is installed properly as ds9. OK
+	4 out of 4 external dependencies installed properly.
+
 
 Please let the organizers know if any dependency gives you troubles.
 
