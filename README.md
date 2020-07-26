@@ -33,7 +33,7 @@ http://growth.caltech.edu/astronomy-school.html
 
 ### School 2020 participants
 
-A JupyterHub environment was set up for the participants of the GROWTH school 2020. Please refer to the [JupyterHub user's guide](docs/users_guide_jupyterhub.md) that was prepared for the school.
+A JupyterHub environment was set up for the participants of the GROWTH school 2020. Please refer to the [JupyterHub user's guide](docs/users_giude_jupyterhub.md) that was prepared for the school.
 
 For registered school participants, the link above contains all the information necessary to run the hands-on modules during the live sessions. For information about how to download the modules and install the software locally, please read on.
 
