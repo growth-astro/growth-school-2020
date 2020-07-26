@@ -2,43 +2,44 @@ GROWTH School 2020
 Python Notebook README
 ********************************
 
-Author: Cameron Hummels (Caltech). 
-Updated by Iva Kostadinova (Caltech) and Igor Andreoni (Caltech)
+Authors: Cameron Hummels (Caltech) 
+Updated by Iva Kostadinova (Caltech), Igor Andreoni (Caltech)
 
-Introduction and Downloading the Modules
 *************************************************
+### Introduction
 
-These Python notebooks were developed by the GROWTH (Global Relay of Observatories Watching Transients Happen) international collaboration in astronomy for the GROWTH school series.  The notebooks you have just downloaded were used during the GROWTH school held on Aug 5-7, 2019 in San Diego, CA. 
+These Python notebooks were developed by the GROWTH (Global Relay of Observatories Watching Transients Happen) international collaboration in astronomy for the GROWTH school series.  The notebooks you have just downloaded were used during the GROWTH online school held on Aug 16-18, 2020.
 
-Each Python notebooks is accompanied by an introductory lecture given by experts in the field of  time-domain astronomy and observational followup to astrophysical transients. Each lecture and its Python notebook form a “module”. There are a total of twelve such "modules"  that were presented at the GROWTH school in 2019. 
+Each Python notebooks is accompanied by an introductory lecture given by experts in the field of  time-domain astronomy and observational followup to astrophysical transients. Each lecture and its Python notebook form a “module”. There are a total of twelve such "modules"  that were presented at the GROWTH school in 2020. 
 
-Unzip the file you have just downloaded and tar it.  (The $ represents the 
-command line prompt, so just type the stuff following it):
-```
-$ tar -zxvf GROWTH_Modules_2019.tar.gz
-```
 The modules can be run individually but some of the modules deal with content
-provided in previous modules.  The order of the GROWTH summer school in 2019 is:
+provided in previous modules. The order of the GROWTH summer school in 2020 is:
 
 * 1:  Python Basics
 * 2:  Image Data Reduction
 * 3:  UV/Optical/IR Photometry
 * 4:  Observing Run Preparation
 * 5:  Image Subtraction
-* 6:  Gravitational Wave Localization
-* 7:  Machine Learning
-* 8:  Spectroscopy
-* 9:  Lightcurve Analysis
-* 10: Asteroids
-* 11: Data Analysis in X-ray Astronomy
-* 12: Radio Astronomy and Data Analysis
+* 6:  Lightcurve Analysis
+* 7:  Spectroscopy
+* 8: Data Analysis in X-ray Astronomy
+* 9: Radio Astronomy and Data Analysis
 
 Note that the resources from previous GROWTH astronomy schools are also available for downloading from our website. To learn more, visit 
 
 http://growth.caltech.edu/astronomy-school.html
 
-Installing Dependencies
 ****************************
+### Downloading the Modules
+
+Unzip the file you have just downloaded and tar it.  (The $ represents the 
+command line prompt, so just type the stuff following it):
+```
+$ tar -zxvf GROWTH_Modules_2020.tar.gz
+```
+
+****************************
+### Installing Dependencies
 
 To run any of these modules, you must have a working python 3.x install 
 and several python libraries.  You can tell your python version by running:
@@ -66,8 +67,8 @@ For all of the notebooks, you'll want to get these basic packages:
 
 $ pip install matplotlib numpy scipy astropy jupyter astroquery pandas 
 
-Installing Python Dependencies for Each Notebook
 ************************************************************
+### Installing Python Dependencies for Each Notebook
 
 For each of the notebooks, there are additional packages and external 
 programs required.  If you plan to run all of the modules, you can just install all of the necessary dependencies (after executing the command above) as:
@@ -96,30 +97,20 @@ $ pip install astroplan pytz
 $ pip install photutils image_registration pytest
 (Requires SExtractor, SWarp, PSFEx, and DS9)
 
-6:  Gravitational Wave Localization and Galaxy Crossmatch
-$ pip install healpy ligo.skymap
-
-7: Machine Learning
-$ pip install sklearn pydotplus
-
-8:  Spectra
-$ pip install pyds9
-(Requires DS9)
-
-9:  Light Curve Analysis
+6:  Light Curve Analysis
 No additional packages required
 
-10: Asteroids
-$ pip install tensorflow pillow
-
-11:  X-ray Data Analysis
+7:  Spectra
 No additional packages required
 
-12: Radio Data Analysis
+8:  X-ray Data Analysis
+No additional packages required
+
+9: Radio Data Analysis
 $ pip install emcee corner
 
-Installing Astromatic Dependencies for Photometry Modules
 **********************************************************************
+### Installing Astromatic Dependencies for Photometry Modules
 
 There are a few external programs required for some of the photometry 
 modules, which are not able to be installed using pip.  These are needed for
@@ -145,8 +136,8 @@ below, but if all else fails, try to install via source or use our VirtualBox
 image that has the dependencies already all installed, but requires 15GB of
 free space and is slower than running things natively on your own computer.
 
-Installing the Astromatic Dependencies for Linux Users
 ****************************************************************
+### Installing the Astromatic Dependencies for Linux Users
 
 If you are running linux, try installing them with your favorite package 
 manager: apt-get, yum, rpm.  These should all be able to install these packages
@@ -157,8 +148,8 @@ quite easily.  For example, someone running ubuntu should be able to simply run
 $ [sudo] apt-get install sextractor swarp psfex
 ```
 
-Installing the Astromatic Dependencies for Mac Users
 ****************************************************************
+### Installing the Astromatic Dependencies for Mac Users
 
 If you have a Mac, some of the time you can install these dependencies 
 pretty easily.  Things are definitely easiest if you use MacPorts as your 
@@ -238,15 +229,15 @@ FFTW).  You might be better off using MacPorts as your package manager, or
 even trying to follow our backup plan, to install VirtualBox and get all of
 the dependencies for free (see below).
 
-Installing the Astromatic Dependencies for Windows Users
 *******************************************************************
+### Installing the Astromatic Dependencies for Windows Users
 
 Sorry, the Astromatic group does not support Windows machines.  You can try
 building from source, but this is not advisable.  Instead, you can try to install a virtual machine running linux on your Windows machine.  Scroll down to the APPENDIX to learn how to install a VirtualBox.
 
 
-Testing to Ensure All Dependencies Are Correctly Installed
 ***********************************************************************
+### Testing to Ensure All Dependencies Are Correctly Installed
 
 To ensure you have all of the dependencies properly installed, we have provided
 a short python script to run through and test these dependencies.  Please
@@ -257,8 +248,8 @@ your arrival at the GROWTH School.
 $ python test_dependencies.py
 ```
 
-Running a module
 *****************************
+### Running a module
 
 OK, you were able to get all of the dependencies installed, and you have
 your desired copies of the modules.  Congratulations!  Now you can run them
@@ -285,8 +276,9 @@ check the solutions at the end in the included notebook.
 $ cd python_basics
 $ jupyter notebook python_basics.ipynb
 
-APPRENDIX
 ***********
+### APPRENDIX
+
 Using a VirtualBox Instance If You Cannot Properly Install Dependencies
 
 In some cases, there may be difficulties installing all of the necessary 
@@ -318,7 +310,7 @@ https://drive.google.com/open?id=1s0wTC7awmOnaaO5tg3MGwqNB0KlKq-j2
 Once this file is downloaded, unzip it using gzip to expand to it's full 15 GB 
 filesize:
 
-$ tar -zxvf GROWTH_VBox_2019.tar.gz
+$ tar -zxvf GROWTH_VBox_2020.tar.gz
 
 Now it should simply be a matter of running VirtualBox and loading the 
 downloaded, unzipped image file GROWTH_2019_VBox.vbox.  Try opening it
