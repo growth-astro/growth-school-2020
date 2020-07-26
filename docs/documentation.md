@@ -31,7 +31,7 @@ This is what is actually happening when a user logs in and gets a server:
 		    sudo -E -H -u root chmod o-rwx $log_file
 		fi
 
-which actually runs the scripts `/home/admin/start/as-user.sh` and `/home/admin/start/as-root.sh`.
+which actually runs the scripts [`/home/admin/start/as-user.sh`](../scripts/as-user.sh) and [`/home/admin/start/as-root.sh`](../scripts/as-root.sh).
 To summarize, if you are making permanent changes (adding code), you should modify, build, and push a new Docker image. And if you are making changes to those scripts that need run on server start-up (like pulling notebooks from GitHub or making links in the user's home directory to data stored elsewhere), you should make changes to the start-up sequence by editing `as-user.sh` and `as-root.sh`. And to actually test the changes, you should stop and start your notebook server to either trigger pulling the updated Docker image or re-run the start-up scripts at https://growth.dirac.institute/hub/home or https://growth.dirac.institute/hub/admin.
 
 https://github.com/jupyter/docker-stacks/blob/master/base-notebook/start-singleuser.sh <br>
@@ -43,10 +43,10 @@ to make this process as hands-off as possible, I will set up the system to pull 
 ### FAQ and examples
 
 * How to update the docker to include new software?
-
-You can use `apt-get`. In the Dockerfile, add:
+  * You can use `apt-get`. In the Dockerfile, add:
 
 		RUN apt-get -y install mysoftware
+  * Then to update the docker image ???
 
 * How to update python to include new modules?
 
@@ -67,7 +67,21 @@ After:
 When the change is made, build, and push the new image
 
 * How to update the data file
+  * Download the data file from google drive
+  * Then upload it to the hub (ideally this could be done in one step with wget/curl, but google's interface often asks questions about virus scans etc that make it harder)
+  * expand it in the `/nfs` area for persistance:
+  
+          (base) dlakaplan@jupyter-dlakaplan:/nfs$ sudo -u admin tar xvf ~dlakaplan/growth-school-2020_Jul23.tar
+
+  * the script [`link_growth_data.py`](../scripts/link_growth_data.py) will link that to the user's directory
+  * Update permissions:
+  
+          (base) dlakaplan@jupyter-dlakaplan:/nfs/growth-school-2020$ sudo -u admin chmod -R a+r .
+	  
 * How to add new students: add to the `Participants` at https://github.com/orgs/growth-astro-school/teams
+  * The first time an admin logs in we need to grant access to the right organization 
+  * Can be controlled through "[Third-party applications](Screen%20Shot%202020-07-24%20at%2011.41.49%20AM.png)" tab in settings for admins
 * How to add new TAs: add to the `TAs` at https://github.com/orgs/growth-astro-school/teams
 * How to (re)start the server to test/deploy changes
+  * For an individual look under `Control Panel` (upper right) where you can shut down/restart your server
 
