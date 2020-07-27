@@ -52,8 +52,8 @@ The DockerHub repository is the location to pull a Docker image “binary”
 The hub is set up to pull a Docker image from the DockerHub repository growthastro/growth-school-2020-notebook with the tag deploy. In order to change the contents of the image that gets pulled from the Dockerhub repository, one must build a new Docker image from a modified Dockerfile and push the new image to the DockerHub repository. Here are instructions for how to do that:
 
 		# get the Dockerfile
-		git clone https://github.com/growth-astro/growth-hub-notebook.git
-		cd growth-hub-notebook
+		git clone https://github.com/growth-astro/growth-school-2020.git
+		cd growth-school-2020
 		# make edits to the Dockerfile
 		# ...
 		# build a Docker image from the Dockerfile (in current directory .) and tag it (-t) so Docker knows this Docker image should belong to the 'growthastro/growth-school-2020-notebook' DockerHub repository and should have the tag 'deploy'
