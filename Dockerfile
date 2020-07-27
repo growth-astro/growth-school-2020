@@ -65,9 +65,13 @@ RUN pip install \
     image_registration
 
 # Add missing packages
+RUN conda install --yes \
+    pyregion
+
 RUN pip install \
-    pyregion \
-    astroplan \
+    astroplan
+
+RUN pip install \
     pytz
 
 # Add jupyter-desktop-server
