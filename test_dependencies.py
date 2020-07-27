@@ -178,7 +178,7 @@ if __name__ == '__main__':
     
     # Test external program dependencies
     print("\nTesting External Dependencies")
-    dependencies = [('sextractor', 'sex'), ('SWarp', 'swarp'), ('psfex', 'PSFEx'), ('ds9', 'DS9')]
+    dependencies = [('source-extractor', 'sex'), ('SWarp', 'swarp'), ('psfex', 'PSFEx'), ('ds9', 'DS9')]
     i = 0
     for dep_name1, dep_name2 in dependencies:
         i += test_dependency(dep_name1, dep_name2)
