@@ -1,0 +1,6 @@
+[Desktop Entry]
+Version=1.0
+Name[en_US]=DS9
+Exec=/usr/local/bin/ds9
+Type=Application
+
