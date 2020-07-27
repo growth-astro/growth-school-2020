@@ -1,0 +1,23 @@
+#!/usr/bin/env perl
+
+$XPAID=$ENV{XPAID};
+if ($XPAID !~ /\S/) {
+    $XPAID="ds9";
+}
+
+$frame=0;
+$frame=$ARGV[0] if (@ARGV>0);
+
+xpaset("frame $frame") unless ($frame==0);
+xpaset("regions deleteall");
+
+exit(0);
+
+
+sub xpaset {
+    foreach $cmd (@_) {
+	system("xpaset -p $XPAID $cmd");
+    }
+}
+
+__END__

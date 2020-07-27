@@ -1,0 +1,58 @@
+#!/usr/bin/env perl
+
+$XPAID=$ENV{XPAID};
+if ($XPAID !~ /\S/) {
+    $XPAID="ds9";
+}
+
+while (@ARGV) {
+    push(@files,$ARGV[0]);
+    if ($#ARGV >=1) {
+	if ($ARGV[1] =~ /^\d$/) {
+	    $frames[$#files]=$ARGV[1];
+	    shift(@ARGV);
+	}
+	else {
+	    $frames[$#files]=0;
+	}
+    }
+    else {
+	$frames[$#files]=0;
+    }
+    shift(@ARGV);
+}
+
+for ($i=0;$i<=$#files;$i++) {
+    $file=$files[$i];
+    $frame=$frames[$i];
+    $spec="";
+    if ($file =~ /\[/) {
+	($file,$spec)=split(/\[/,$file);
+	$spec = "[" . $spec;
+    }
+    if (!(-e $file) && (-e "${file}.fits")) {
+	$file .=".fits";
+    }
+    die "Could not open file $file\n" if (!(-e $file));
+    
+    $file="`pwd`/$file" unless ($file=~/^\//);
+
+    xpaset("frame $frame") unless ($frame==0);
+    if ($spec =~ /\S/) {
+	xpaset("file medatacube $file$spec");
+    }
+    else {
+	xpaset("file medatacube $file");
+    }
+}
+
+exit(0);
+
+
+sub xpaset {
+    foreach $cmd (@_) {
+	system("xpaset -p $XPAID $cmd");
+    }
+}
+
+__END__

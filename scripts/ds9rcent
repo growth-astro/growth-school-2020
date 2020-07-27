@@ -1,0 +1,67 @@
+#!/usr/bin/env perl
+
+$XPAID=$ENV{XPAID};
+if ($XPAID !~ /\S/) {
+    $XPAID="ds9";
+}
+
+
+$frame=0;
+$reg=$ARGV[0];
+if ($#ARGV >= 1) {
+    $frame=$ARGV[0];
+    $reg=$ARGV[1];
+}
+xpaset("frame $frame") unless ($frame==0);
+
+$s="xpaget $XPAID regions";
+$res=`$s`;
+@res=split(/\n/,$res);
+$found=0;
+$Syst="";
+foreach $t  (@res) {
+    $t =~ s/\n//;    
+    if ($t =~ /\;/) {
+	($syst,$rest)=split(/\;/,$t);
+    }
+    else {
+	$rest=$t;
+	$syst="";
+    }
+    if ($rest !~ /,/) {
+	# not a region
+	if ($rest eq "physical" || $rest eq "image" || $rest eq "fk5" || $rest eq "icrs" || $rest eq "galactic" || $rest eq "ecliptic" || $rest eq "fk4" || $rest eq "linear") {
+	    $Syst=$rest;
+	}
+    }
+    $rest =~ s/.*?\(//;
+    ($x,$y,@rest2)=split(/,/,$rest);
+    ($rest3,$end)=split(/\#/,join(",",@rest2));
+    $end =~ s/.*?text=//;
+    $end =~ s/\{//;
+    $end =~ s/\}.*//;
+    if ($end eq $reg) {
+	if ($Syst =~ /\S+/ && $syst eq "") {
+	    $syst=$Syst;
+	}
+	$s="pan to $x $y $syst";
+	xpaset($s);
+	$found=1;
+	last;
+    }
+}
+
+if (!($found)) {
+    print "\tNo region found matching \"$reg\"\n";
+}
+
+exit(0);
+
+
+sub xpaset {
+    foreach $cmd (@_) {
+	system("xpaset -p $XPAID $cmd");
+    }
+}
+
+__END__

@@ -1,0 +1,29 @@
+#!/usr/bin/env perl
+
+$XPAID=$ENV{XPAID};
+if ($XPAID !~ /\S/) {
+    $XPAID="ds9";
+}
+
+@frame=(0);
+$file=$ARGV[0];
+$file="`pwd`/$file" unless ($file=~/^\//);
+@frame=@ARGV[1..$#ARGV] if ($#ARGV>1);
+
+
+foreach $frame (@frame) {
+    xpaset("frame $frame") unless ($frame==0);
+    xpaset("regions load $file");
+}
+
+
+exit(0);
+
+
+sub xpaset {
+    foreach $cmd (@_) {
+	system("xpaset -p $XPAID $cmd");
+    }
+}
+
+__END__

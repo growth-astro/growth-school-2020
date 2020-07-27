@@ -1,0 +1,41 @@
+#!/usr/bin/env perl
+
+$XPAID=$ENV{XPAID};
+if ($XPAID !~ /\S/) {
+    $XPAID="ds9";
+}
+
+@frames=@ARGV;
+if ($#frames < 0) {
+    @frames=(0);
+}
+
+
+foreach $frame (@frames) {
+    # go to the frame if necessary
+    xpaset("frame $frame") unless ($frame==0);
+    # get the file name
+    $file=xpaget("file");
+    xpaset("file $file");
+}
+
+
+
+exit(0);
+
+
+sub xpaset {
+    foreach $cmd (@_) {
+	system("xpaset -p $XPAID $cmd");
+    }
+}
+
+sub xpaget {
+    $s="";
+    foreach $cmd (@_) {
+	$s.=`xpaget $XPAID $cmd`;
+    }
+    return $s;
+}
+
+__END__

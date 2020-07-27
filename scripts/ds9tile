@@ -1,0 +1,49 @@
+#!/usr/bin/env perl
+
+$XPAID=$ENV{XPAID};
+if ($XPAID !~ /\S/) {
+    $XPAID="ds9";
+}
+
+# parse arguments
+@frames_good=@ARGV[0..$#ARGV];
+# get active frames
+
+$frames_all=xpaget("frame all");
+$frames_all =~ s/\s+$//;
+@frames_all=split(/\s+/,$frames_all);
+
+if ($#frames_good < 0) {
+    xpaset("tile");
+}
+else {
+    # make only the desired frames active
+    foreach $frame (@frames_all) {
+	if (grep(/$frame/,@frames_good)>=1) {
+	    xpaset("frame show $frame");
+	}
+	else {
+	    xpaset("frame hide $frame");
+	}
+    }
+    xpaset("tile");
+}
+    
+
+exit(0);
+
+sub xpaset {
+    foreach $cmd (@_) {
+	system("xpaset -p $XPAID $cmd");
+    }
+}
+
+sub xpaget {
+    $s="";
+    foreach $cmd (@_) {
+	$s.=`xpaget $XPAID $cmd`;
+    }
+    return $s;
+}
+
+__END__

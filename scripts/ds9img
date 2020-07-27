@@ -1,0 +1,38 @@
+#!/usr/bin/env perl
+
+$XPAID=$ENV{XPAID};
+if ($XPAID !~ /\S/) {
+    $XPAID="ds9";
+}
+
+$frame=0;
+$frame=$ARGV[0] if (@ARGV);
+
+if ($frame!=0) {
+    @oldfrms=xpaget("frame");
+    $oldfrm=$oldfrms[0];
+    xpaset("frame $frame");
+}
+#xpaset("tcl MatchFramesWCS");
+xpaset("match frames image");
+if ($frame!=0) {
+    xpaset("frame $oldfrm");
+}
+
+exit(0);
+
+sub xpaset {
+    foreach $cmd (@_) {
+	system("xpaset -p $XPAID $cmd");
+    }
+}
+
+sub xpaget {
+    foreach $cmd (@_) {
+	@output=`xpaget $XPAID $cmd`;
+	push(@out,@output);
+    }
+    return @out;
+}
+
+__END__

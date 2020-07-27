@@ -1,0 +1,155 @@
+#!/usr/bin/env perl
+
+$TRUE=1;
+$FALSE=0;
+$doall=$FALSE;
+$notest=$FALSE;
+
+while(@ARGV){
+    $_=shift(@ARGV);
+    if (/^[-\+]/) {
+	# Options
+	if (/^-a/i) {
+	    $doall=$TRUE;
+	    $notest=$TRUE if (/^-A/);
+	}elsif (/^-k/i) {
+	    @newkeys=split(/,/,shift(@ARGV));
+	    push(@keys,@newkeys);
+	}else{
+	    print STDERR "Unrecognized option $_\n";
+	}
+    }else{
+	# Arguments
+	push(@args,$_);
+    }
+}
+
+while (@args) {
+    $_=shift(@args);
+    s/\n//; # kill any newlines
+    if (/\.fits/) {
+	# Arg is a FITS file
+	if (-e $_) {
+	    push(@files,$_);
+	}else{
+	    print STDERR "FITS file $_ not found, skipping...\n";
+	}
+    }else{
+	if (-e "$_.fits") {
+	    # Arg is root of a FITS file
+	    push(@files,"$_.fits");
+	}else{
+	    # Arg is file listing
+	    push(@args,`cat $_`);
+	}
+    }
+}
+
+# Current frame / frameset parameters
+@frmtxt=xpaget("frame");
+$frame=$frmtxt[0];
+$maxframe=($frame>4 ? $frame : 4);
+
+# File counter
+$i=0;
+
+# Display-all option
+if ($doall) {
+    if ($frame+$#files<=$maxframe || $notest || &goahead) {
+	# Display all files
+	while ($i<@files) {
+	    $file=$files[$i];
+	    $file="`pwd`/$file" unless ($file=~/^\//);
+	    xpaset("file $file");
+	    if ($i<$#files) {
+		++$frame;
+		xpaset("frame $frame");
+	    }
+	    ++$i;
+	}
+	exit(0);
+    }else{
+	# Display only up to $maxframe
+	while ($frame<$maxframe) {
+	    $file=$files[$i];
+	    $file="`pwd`/$file" unless ($file=~/^\//);
+	    xpaset("file $file");
+	    ++$frame;
+	    xpaset("frame $frame");
+	    ++$i;
+	}
+	# Last file will be loaded in interactive loop, below
+    }
+}
+
+# Set up for single-character grabbing
+system "stty", q|-icanon|, q|eol|, "\001";
+
+while ($i<@files) {
+    $file=$files[$i];
+    
+    $file="`pwd`/$file" unless ($file=~/^\//);
+    xpaset("file $file");
+    $nextfile=$FALSE;
+    until ($nextfile) {
+	$char=getc(STDIN);
+	if ($char=~/[jp]/i) {
+	    if ($i>0) {
+		--$i;
+		$nextfile=$TRUE;
+	    }
+	}elsif ($char=~/[ln]/i) {
+	    if ($i<$#files) {
+		++$i;
+		$nextfile=$TRUE;
+	    }
+	}elsif ($char=~/k/i) {
+	    --$frame;
+	    $frame=$maxframe if ($frame==0);
+	    xpaset("frame $frame");
+	}elsif ($char=~/i/i) {
+	    ++$frame;
+	    $frame=1 if ($frame>$maxframe);
+	    xpaset("frame $frame");
+	}elsif ($char=~/q/i) {
+	    print "\n";
+	    $i=@files;
+	    $nextfile=$TRUE;
+	}elsif ($char=~/w/i) {
+	    xpaset("tcl MatchFramesWCS");
+	}elsif ($char=~/m/i) {
+	    xpaset("tcl MatchFrames Image");
+	}
+    }
+}
+
+# Clean up from single-character grabbing
+system "stty", q|icanon|, q|eol|, q|^@|; # ASCII null
+
+exit(0);
+
+##################################################
+
+sub xpaget {
+    my @out=();
+    foreach $cmd (@_) {
+	@txtout=`xpaget ds9 $cmd`;
+	push(@out,@txtout);
+    }
+    return @out;
+}
+
+sub xpaset {
+    foreach $cmd (@_) {
+	system("xpaset -p ds9 $cmd");
+    }
+}
+
+sub goahead {
+    printf "Display %d files in frames %d to %d (y/n)? ",
+	@files,$frame,$frame+$#files;
+    my $ans=<STDIN>;
+    return ($ans=~/y/i);    
+}
+
+__END__
