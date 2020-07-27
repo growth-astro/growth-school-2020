@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=DS9
+Comment=
+Exec=/usr/local/bin/ds9 %F
+Icon=/nfs/misc/ds9.svg
+Path=
+Terminal=false
+StartupNotify=false
