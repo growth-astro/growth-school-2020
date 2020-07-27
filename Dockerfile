@@ -1,50 +1,90 @@
-FROM python:3.6-slim
+FROM jupyter/base-notebook
 
-RUN pip install jupyter && pip install numpy && pip install astropy && pip install scipy
+USER root
 
-RUN pip install matplotlib && pip install image_registration && pip install pytest
+# install system packages
+RUN apt-get update \
+ && apt-get -y install apt-file \
+ && apt-file update \
+ && apt-get -y install \
+    vim \
+    emacs \
+    nano \
+    cron \
+    git \
+    sextractor \
+    psfex \
+    swarp \
+    scamp \
+    dbus-x11 \
+    xfce4 \
+    xfce4-panel \
+    xfce4-session \
+    xfce4-settings \
+    xorg \
+    xubuntu-icon-theme \
+    firefox \
+ && apt-get clean
 
-RUN pip install requests && pip install astroquery 
+# Disable creation of Music, Documents, etc.. directories
+# ref: https://unix.stackexchange.com/questions/268720/who-is-creating-documents-video-pictures-etc-in-home-directory
+RUN apt-get remove -y xdg-user-dirs
 
-RUN pip install photutils
+# Disable the Applications|Log Out menu item in XFCE
+# ref: https://github.com/yuvipanda/jupyter-desktop-server/issues/16
+RUN rm -f /usr/share/applications/xfce4-session-logout.desktop
 
-# Make port 8888 available to the world outside this container
-EXPOSE 8888
+# Install ds9
+RUN cd /usr/local/bin && \
+    curl -L http://ds9.si.edu/download/ubuntu18/ds9.ubuntu18.8.1.tar.gz | tar xzvf -
 
-RUN apt-get update && apt-get -y install apt-file && apt-file update && apt-get -y install vim && \
-    apt-get -y install cron && apt-get -y install git
+# also install xpa
+RUN cd /usr/local/bin && \
+    curl -L http://ds9.si.edu/download/ubuntu18/xpa.ubuntu18.2.1.18.tar.gz | tar xzvf -
 
-RUN apt-get -y install sextractor && apt-get -y install psfex && apt-get -y install swarp && apt-get -y install scamp
+USER $NB_UID
 
-RUN mkdir -p /app
-# RUN mkdir -p /app/data
-# RUN mkdir -p /app/notebooks
-# RUN mkdir -p /app/my_notebooks
+# install conda and pip packages
+RUN conda install --yes \
+    numpy \
+    astropy \
+    scipy \
+    matplotlib \
+    pytest \
+    requests \
+    astroquery \
+    photutils \
+    emcee \
+    corner \
+    nbresuse \
+    widgetsnbextension \
+    nbgitpuller \
+ && conda clean --all -f -y
 
-COPY . /app
+RUN pip install \
+    image_registration
 
-WORKDIR /app
+# Add missing packages
+RUN pip install \
+    pyregion \
+    astroplan \
+    pytz
 
-# Set proxy server, replace host:port with values for your servers
-#ENV http_proxy http://localhost:8888
-#ENV https_proxy https://localhost:8888
+# Add jupyter-desktop-server
+RUN conda install -c manics websockify \
+ && pip install jupyter-server-proxy \
+ && jupyter labextension install @jupyterlab/server-proxy || ( cat /tmp/jupyterlab-debug* && /bin/false ) \
+ && pip install git+https://github.com/mjuric/jupyter-desktop-server
 
-CMD /bin/bash
+USER root
+RUN groupadd -g 996 admin \
+ && useradd --system admin -u 999 -g 996 -m -s /bin/bash \
+ && echo "#includedir /home/admin/etc/sudoers.d" >> /etc/sudoers
 
-# Start Jupyter notebook
-# CMD jupyter-notebook --allow-root --ip=0.0.0.0 &
-RUN echo 'alias startjn="jupyter-notebook --allow-root --ip=0.0.0.0 &"' >> ~/.bashrc
+# Updated version of start.sh, that doesn't mess with the jovyan user
+COPY start.sh /usr/local/bin/
+# Bootstrap script for customizing environment
+COPY start-scripts.sh /usr/local/bin/before-notebook.d/start-scripts.sh
 
-#VOLUME /tmp/.X11-unix
-#ENV DISPLAY unix:0
-
-# Get ds9 running
-# RUN cd /app/Software/SAOImageDS9/ && /app/Software/SAOImageDS9/unix/configure && make
-
-# Final packages to be installed
-
-RUN pip install emcee && pip install corner
-
-RUN apt-get update && apt-get -y install apt-file && apt-file update && apt-get -y install vim && \
-    apt-get -y install cron  && apt-get -y install git
+USER $NB_USER
 
