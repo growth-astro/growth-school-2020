@@ -60,4 +60,10 @@ Navigate to the nootebook, click on its name and you should see the notebook ope
 The notebooks, the raw data, and the data products can be downloaded from the Hub to your computer at any time. On the Hub main interface, navigate to the file of interest, click on the checkbox on the left of the file name, then click the `Download` button that should have appeared on the top bar. There are other ways to download the content, too. For example, you can open the notebook you want to download, click `File`, click `Download As`, then choose a file format and download the file.  After the school finishes, you can download the school material directly from the GROWTH website: http://growth.caltech.edu/growth-school-2020.html
 
 * Using ds9: <br>
-During the school, you may want to visualize astronomical images using the ds9 application. To open a ds9 window, open a new desktop from the Hub main page (click on the `New` dropdown menu in the top-right corner of the page, then click on `Desktop`). A new desktop should open in a new tab. There, open a terminal and type `ds9 &` to start a new ds9 window. You can open an image from the `File` menu of the ds9 GUI, or you can open an image directly from command line by typing on the terminal, for example, `ds9 growth/module_name/data/image_name.fits`
+During the school, you may want to visualize astronomical images using the ds9 application. To open a ds9 window, open a new desktop from the Hub main page (click on the `New` dropdown menu in the top-right corner of the page, then click on `Desktop`). A new desktop should open in a new tab. There, you should see a desktop icon for `ds9`. Alternatively, open a terminal and type `ds9 &` to start a new ds9 window. You can open an image from the `File` menu of the ds9 GUI, or you can open an image directly from command line by typing on the terminal, for example, `ds9 growth/module_name/data/image_name.fits`
+
+*********
+### Notes
+* If you need to restart your server (unusual but not impossible), go to the `Control Panel` in the upper right, click `Stop My Server`.  Wait a bit, then click `Start My Server` when it appears.  You likely will need to also click `Launch Server` after that.
+
+* You cannot close the desktop except for killing the browser window/tab.  Do not use the XFCE `Log Out`.  If you do, you will need to restart your server (see above)
