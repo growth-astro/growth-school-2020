@@ -67,3 +67,5 @@ During the school, you may want to visualize astronomical images using the ds9 a
 * If you need to restart your server (unusual but not impossible), go to the `Control Panel` in the upper right, click `Stop My Server`.  Wait a bit, then click `Start My Server` when it appears.  You likely will need to also click `Launch Server` after that.
 
 * You cannot close the desktop except for killing the browser window/tab.  Do not use the XFCE `Log Out`.  If you do, you will need to restart your server (see above)
+
+* `sextractor` is available via the name `source-extractor`.  Similarly, `swarp` is available via `SWarp`
