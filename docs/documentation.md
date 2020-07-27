@@ -46,7 +46,23 @@ to make this process as hands-off as possible, I will set up the system to pull 
   * You can use `apt-get`. In the Dockerfile, add:
 
 		RUN apt-get -y install mysoftware
-  * Then to update the docker image ???
+  * Then to update the docker image: <br>
+    The Dockerfile represents the “source code” for the Docker  image — this can exist anywhere, and the GitHub repository I set up is just to keep track of the latest version of the Dockerfile
+The DockerHub repository is the location to pull a Docker image “binary”
+The hub is set up to pull a Docker image from the DockerHub repository growthastro/growth-school-2020-notebook with the tag deploy. In order to change the contents of the image that gets pulled from the Dockerhub repository, one must build a new Docker image from a modified Dockerfile and push the new image to the DockerHub repository. Here are instructions for how to do that:
+
+		# get the Dockerfile
+		git clone https://github.com/growth-astro/growth-hub-notebook.git
+		cd growth-hub-notebook
+		# make edits to the Dockerfile
+		# ...
+		# build a Docker image from the Dockerfile (in current directory .) and tag it (-t) so Docker knows this Docker image should belong to the 'growthastro/growth-school-2020-notebook' DockerHub repository and should have the tag 'deploy'
+		docker build . -t growthastro/growth-school-2020-notebook:deploy
+		# push the new version of the Docker image to the DockerHub
+		docker push growthastro/growth-school-2020-notebook:deploy
+
+    This will overwrite the remote Docker image stored on DockerHub. The tagging system (deploy) allows different versions of the Docker image to exit on the DockerHub. You can tag images with any name, but for this deployment, the most recently pushed image with tag deploy will be used by the JupyterHub
+
 
 * How to update python to include new modules?
 
