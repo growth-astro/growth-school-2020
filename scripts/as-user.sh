@@ -38,6 +38,16 @@ initialize_desktop() {
     fi
 }
 
+update_path() {
+    BINDIR="/nfs/bin"
+    if [[ :$PATH: == *:"$BINDIR":* ]] ; then
+      echo "$BINDIR in path"
+    else
+      echo 'export PATH="/nfs/bin:$PATH"' >> /home/$NB_USER/.bashrc
+    fi
+}
+
 get_notebooks
 initialize_conda
 initialize_desktop
+update_path
