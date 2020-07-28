@@ -82,6 +82,10 @@ After:
 
 When the change is made, build, and push the new image
 
+* How to update to include basic scripts?
+
+There are several.  I uploaded them to `/nfs/bin` (which is a persistent space) and gave them executable permissions.  Then I added a check to the startup script to make sure that directory is in the path.
+
 * How to update the data file
   * Download the data file from google drive
   * Then upload it to the hub (ideally this could be done in one step with wget/curl, but google's interface often asks questions about virus scans etc that make it harder)
