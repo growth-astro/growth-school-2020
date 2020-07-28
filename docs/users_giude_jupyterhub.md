@@ -69,3 +69,5 @@ During the school, you may want to visualize astronomical images using the ds9 a
 * You cannot close the desktop except for killing the browser window/tab.  Do not use the XFCE `Log Out`.  If you do, you will need to restart your server (see above)
 
 * `sextractor` is available via the name `source-extractor`.  Similarly, `swarp` is available via `SWarp`
+
+* There are also some simple shell scripts to interact with `ds9` through the [XPA](http://ds9.si.edu/doc/ref/xpa.html) interface. For example, `ds9put <file> 1` will load the given file into buffer #1. You can load regions (`ds9reg`), delete regions (`ds9delreg`), match frames by WCS (`ds9wcs`), and other tasks.
