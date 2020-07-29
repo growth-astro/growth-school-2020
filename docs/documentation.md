@@ -9,7 +9,7 @@ This is what is actually happening when a user logs in and gets a server:
 
 * User logs in at https://growth.dirac.institute/hub/login with GitHub
 
-* If they are authenticated, a docker container is started on a computer (host machine) in a cluster of computers on Amazon Web Services (AWS). The docker image used is (right now) https://hub.docker.com/repository/docker/astronomycommons/growth-hub-notebook. You can imagine a computer on AWS literally running `docker run astronomycommons/growth-hub-notebook` and exposing ports that allow that container (and the Jupyter notebook inside of it) to network with the outside world. The docker container has a filesystem isolated from the host machine it is running on, but we modify the filesystem with mounts to other resources. In this case, the docker container mounts `/home/admin` and `/nfs` to another computer in the cluster that hosts the NFS server. Additionally, `/home/{username}`  (e.g. `/home/stevenstetzler`) is mounted to a hard drive (EBS volume in AWS terms) attached to the host machine. Only these directories are permanent, the rest of the filesystem is ephemeral. We can edit what is contained in the ephemeral file system by making changed to the Docker image itself. For example, to edit the conda installation in `/opt/conda` it’s easiest to add the line `RUN conda install <my-package>` to the Dockerfile, build, and push the new image. Changes made this way will only propagate to the user after the user restarts their server by navigating to https://growth.dirac.institute/hub/home and clicking "Stop My Server" (since restarting the server triggers the latest image to be pulled from the docker hub). As admins you can also navigate to https://growth.dirac.institute/hub/admin to start/stop/and access other people’s servers.
+* If they are authenticated, a docker container is started on a computer (host machine) in a cluster of computers on Amazon Web Services (AWS). The docker image used is (right now) https://hub.docker.com/repository/docker/astronomycommons/growth-hub-notebook. You can imagine a computer on AWS literally running `docker run astronomycommons/growth-hub-notebook` and exposing ports that allow that container (and the Jupyter notebook inside of it) to network with the outside world. The docker container has a filesystem isolated from the host machine it is running on, but we modify the filesystem with mounts to other resources. In this case, the docker container mounts `/home/admin` and `/nfs` to another computer in the cluster that hosts the NFS server. Additionally, `/home/{username}`  (e.g. `/home/stevenstetzler`) is mounted to a hard drive (EBS volume in AWS terms) attached to the host machine. Only these directories are permanent, the rest of the filesystem is ephemeral. We can edit what is contained in the ephemeral file system by making changed to the Docker image itself. For example, to edit the conda installation in `/opt/conda` it’s easiest to add the line `RUN conda install <my-package>` to the [Dockerfile](../scripts/Dockerfile), build, and push the new image. Changes made this way will only propagate to the user after the user restarts their server by navigating to https://growth.dirac.institute/hub/home and clicking "Stop My Server" (since restarting the server triggers the latest image to be pulled from the docker hub). As admins you can also navigate to https://growth.dirac.institute/hub/admin to start/stop/and access other people’s servers.
 
 * When the docker container starts (`docker run` on the host), a chain of scripts get run that customize the user environment before running the jupyter notebook command. In particular, the first command that gets run is `start-singleuser.sh` (https://github.com/jupyter/docker-stacks/blob/master/base-notebook/start-singleuser.sh) which triggers `start.sh` (https://github.com/growth-astro/growth-hub-notebook/blob/master/start.sh) which looks for more scripts in `/usr/local/bin/before-notebook.d`, where we've placed a final script:
 
@@ -43,7 +43,7 @@ to make this process as hands-off as possible, I will set up the system to pull 
 ### FAQ and examples
 
 * How to update the docker to include new software?
-  * You can use `apt-get`. In the Dockerfile, add:
+  * You can use `apt-get`. In the [Dockerfile](../scripts/Dockerfile), add:
 
 		RUN apt-get -y install mysoftware
   * Then to update the docker image: <br>
@@ -54,6 +54,7 @@ The hub is set up to pull a Docker image from the DockerHub repository growthast
 		# get the Dockerfile
 		git clone https://github.com/growth-astro/growth-school-2020.git
 		cd growth-school-2020
+		cd scripts
 		# make edits to the Dockerfile
 		# ...
 		# build a Docker image from the Dockerfile (in current directory .) and tag it (-t) so Docker knows this Docker image should belong to the 'growthastro/growth-school-2020-notebook' DockerHub repository and should have the tag 'deploy'
