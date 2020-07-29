@@ -4,7 +4,7 @@ get_notebooks() {
     echo "get_notebooks()"
     # pull the notebooks
     examples_folder="/home/$NB_USER/growth"
-    gitpuller https://github.com/growth-astro-school/growth-school-2020 master $examples_folder
+    gitpuller https://github.com/growth-astro/growth-school-2020 master $examples_folder
 }
 
 initialize_conda() {
