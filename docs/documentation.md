@@ -108,6 +108,6 @@ There are several.  I uploaded them to `/nfs/bin` (which is a persistent space) 
 * How to give admin rights on the hub:
   * You can change their access at the JupyterHub level by going to https://growth.dirac.institute/hub/admin, clicking “edit user” and enabling the “admin” option. If you want to change their access at the filesystem level, you should add their names (as root) to the `/home/admin/etc/sudoers.d/00-admins-group`.
 * How to view the hub as another user:
-  * Go to `Control Panel` ![Control Panel](Screen Shot 2020-07-30 at 10.19.15 AM.png)
+  * Go to `Control Panel` ![Control Panel](control_panel.png)
   * Click on `Admin`
-  * You should see everybody's server: ![Control Panel](Screen Shot 2020-07-30 at 10.19.25 AM.png)
+  * You should see everybody's server: ![Control Panel](admin_view.png)
