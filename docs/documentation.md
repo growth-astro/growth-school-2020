@@ -105,4 +105,5 @@ There are several.  I uploaded them to `/nfs/bin` (which is a persistent space) 
 * How to add new Tutors: add to the `Tutors` at https://github.com/orgs/growth-astro-school/teams
 * How to (re)start the server to test/deploy changes
   * For an individual look under `Control Panel` (upper right) where you can shut down/restart your server
-
+* How to give admin rights on the hub:
+  * You can change their access at the JupyterHub level by going to https://growth.dirac.institute/hub/admin, clicking “edit user” and enabling the “admin” option. If you want to change their access at the filesystem level, you should add their names (as root) to the `/home/admin/etc/sudoers.d/00-admins-group`.
