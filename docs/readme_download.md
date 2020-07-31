@@ -2,8 +2,8 @@ GROWTH School 2020
 Python Notebook README for local download
 ********************************
 
-Authors: Cameron Hummels (Caltech), Igor Andreoni (Caltech) <br>
-Updated by Iva Kostadinova (Caltech) <br>
+Authors: Cameron Hummels (Caltech) <br>
+Updated by Iva Kostadinova (Caltech), Igor Andreoni (Caltech) <br>
 Contact: Igor Andreoni <andreoni@caltech.edu>
 
 
