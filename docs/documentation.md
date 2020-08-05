@@ -32,7 +32,7 @@ This is what is actually happening when a user logs in and gets a server:
 		fi
 
 which actually runs the scripts [`/home/admin/start/as-user.sh`](../scripts/as-user.sh) and [`/home/admin/start/as-root.sh`](../scripts/as-root.sh).
-To summarize, if you are making permanent changes (adding code), you should modify, build, and push a new Docker image. And if you are making changes to those scripts that need run on server start-up (like pulling notebooks from GitHub or making links in the user's home directory to data stored elsewhere), you should make changes to the start-up sequence by editing `as-user.sh` and `as-root.sh`. And to actually test the changes, you should stop and start your notebook server to either trigger pulling the updated Docker image or re-run the start-up scripts at https://growth.dirac.institute/hub/home or https://growth.dirac.institute/hub/admin.
+To summarize, if you are making permanent changes (adding code), you should modify, build, and push a new Docker image. And if you are making changes to those scripts that need run on server start-up (like pulling notebooks from GitHub or copying the data to the user's home directory), you should make changes to the start-up sequence by editing `as-user.sh` and `as-root.sh`. And to actually test the changes, you should stop and start your notebook server to either trigger pulling the updated Docker image or re-run the start-up scripts at https://growth.dirac.institute/hub/home or https://growth.dirac.institute/hub/admin.
 
 https://github.com/jupyter/docker-stacks/blob/master/base-notebook/start-singleuser.sh <br>
 https://github.com/growth-astro/growth-hub-notebook/blob/master/start.sh
@@ -94,7 +94,7 @@ There are several.  I uploaded them to `/nfs/bin` (which is a persistent space) 
   
           (base) dlakaplan@jupyter-dlakaplan:/nfs$ sudo -u admin tar xvf ~dlakaplan/growth-school-2020_Jul23.tar
 
-  * the script [`link_growth_data.py`](../scripts/link_growth_data.py) will link that to the user's directory
+  * the script [`link_growth_data.py`](../scripts/link_growth_data.py) will copy data to the user's directory
   * Update permissions:
   
           (base) dlakaplan@jupyter-dlakaplan:/nfs/growth-school-2020$ sudo -u admin chmod -R a+r .
