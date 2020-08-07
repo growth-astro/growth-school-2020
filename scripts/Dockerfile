@@ -49,7 +49,7 @@ RUN conda install --yes \
     numpy \
     astropy \
     scipy \
-    matplotlib \
+    matplotlib=3.2.2 \
     pytest \
     requests \
     astroquery \
@@ -59,20 +59,14 @@ RUN conda install --yes \
     nbresuse \
     widgetsnbextension \
     nbgitpuller \
+    pyregion \
  && conda clean --all -f -y
 
 RUN pip install \
-    image_registration
-
-# Add missing packages
-RUN conda install --yes \
-    pyregion
-
-RUN pip install \
-    astroplan
-
-RUN pip install \
-    pytz
+    image_registration \
+    astroplan \
+    pytz \
+ && rm -rf ~/.cache/pip
 
 # Add jupyter-desktop-server
 RUN conda install -c manics websockify \
@@ -80,6 +74,7 @@ RUN conda install -c manics websockify \
  && jupyter labextension install @jupyterlab/server-proxy || ( cat /tmp/jupyterlab-debug* && /bin/false ) \
  && pip install git+https://github.com/mjuric/jupyter-desktop-server
 
+# Add admin user
 USER root
 RUN groupadd -g 996 admin \
  && useradd --system admin -u 999 -g 996 -m -s /bin/bash \
