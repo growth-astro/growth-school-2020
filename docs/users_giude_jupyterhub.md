@@ -49,6 +49,11 @@ Please let the organizers know if any dependency gives you troubles.
 The school participants can familiarize themselves with jupyter notebooks using the `playground.ipynb` notebook in the `/growth/` directory.
 
 *********
+### New to Jupyter?
+
+If you would like to familiarize yourself with how Jupyter notebooks work, you can check out this [video](http://video.sdsu.edu/nas/capture/2018/rquimbysdsu.edu/jupyter/jupyter_-_20180830_102214_6.html) and [tutorial notebook](https://github.com/rmquimby/Astronomical_Techniques/blob/master/jupyter.ipynb).  If you want more general practice with github, python, etc there are more tutorials at [Robert Quimby's Astronomical Techniques class](https://github.com/rmquimby/Astronomical_Techniques)
+
+*********
 ### Usage
 
 When you login into the Hub, you can navigate the folders to find the Jupyter notebook of your choice. When you open the notebook, you can edit and run it freely. Your edits will remain saved even when the server is stopped and re-started.
