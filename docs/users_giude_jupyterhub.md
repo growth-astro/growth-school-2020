@@ -10,7 +10,7 @@ A JupyterHub framework was setup for the GROWTH School 2020 (referred to as "the
 *********
 ### Login
 
-In order to login the Hub, you must provide the school organizers with your GitHub account ID. If you do not have a GitHub account yet, please register at https://github.com/join?source=login
+In order to login the Hub, you must provide the school organizers with your GitHub account ID. [Most of the school attendees have already provided the organizers with their GitHub account, so you are already set.] If you do not have a GitHub account yet, please register at https://github.com/join?source=login
 
 Thanks to your GitHub account ID, the school organizers will add you to the `growth-astro-school` GitHub organization, in the appropriate team (Participants, Tutors, Admin). No action from you is required here. Becoming part of this organization will allow your account to be "whitelisted", so that you can login the Hub using your GitHub credentials.
 
@@ -59,7 +59,7 @@ If you would like to familiarize yourself with how Jupyter notebooks work, you c
 When you login into the Hub, you can navigate the folders to find the Jupyter notebook of your choice. When you open the notebook, you can edit and run it freely. Your edits will remain saved even when the server is stopped and re-started.
 
 * Opening and running a notebook: <br>
-Navigate to the nootebook, click on its name and you should see the notebook opening in a new tab. A guide to how to use jupyter notebooks can be found [HERE](https://jupyter.brynmawr.edu/services/public/dblank/Jupyter%20Notebook%20Users%20Manual.ipynb). Please familiarize yourself with jupyter notebooks before the school begins.
+Navigate to the nootebook, click on its name and you should see the notebook opening in a new tab. Please familiarize yourself with the jupyter notebooks before the school begins, for example using the `playground.ipynb` test notwbook in the `/growth/` directory.
 
 * Downloading the school material: <br>
 The notebooks, the raw data, and the data products can be downloaded from the Hub to your computer at any time. On the Hub main interface, navigate to the file of interest, click on the checkbox on the left of the file name, then click the `Download` button that should have appeared on the top bar. There are other ways to download the content, too. For example, you can open the notebook you want to download, click `File`, click `Download As`, then choose a file format and download the file.  After the school finishes, you can download the school material directly from the GROWTH website: http://growth.caltech.edu/growth-school-2020.html
