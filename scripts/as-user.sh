@@ -4,7 +4,12 @@ get_notebooks() {
     echo "get_notebooks()"
     # pull the notebooks
     examples_folder="/home/$NB_USER/growth"
+    # we may want to delete the existing notebooks first
+    echo "Deleting notebooks..."
+    /home/admin/start/delete_notebooks.py $examples_folder
     gitpuller https://github.com/growth-astro/growth-school-2020 master $examples_folder
+    # and link the data
+    /home/admin/start/link_growth_data.py /nfs/growth-school-2020 $examples_folder
 }
 
 initialize_conda() {
