@@ -4,7 +4,32 @@ Python Notebook README for local download
 
 Authors: Cameron Hummels (Caltech) <br>
 Updated by Iva Kostadinova (Caltech), Igor Andreoni (Caltech) <br>
-Contact: Igor Andreoni <andreoni@caltech.edu>
+
+*************************************************
+### Introduction
+
+These Python notebooks were developed by the GROWTH (Global Relay of Observatories Watching Transients Happen) international collaboration in astronomy for the GROWTH school series.  The notebooks were prepared for the [GROWTH online school](http://growth.caltech.edu/growth-school-2020.html) to be held on August 17-21, 2020.
+
+Each Python notebooks is accompanied by an introductory lecture given by experts in the field of  time-domain astronomy and observational followup to astrophysical transients. Each lecture and its Python notebook form a “module”. There are a total of twelve such "modules"  that were presented at the GROWTH school in 2020. 
+
+The modules can be run individually but some of the modules deal with content
+provided in previous modules. The order of the GROWTH summer school in 2020 is:
+
+* 1:  Python Basics
+* 2:  Image Data Reduction
+* 3:  UV/Optical/IR Photometry
+* 4:  Observing Run Preparation
+* 5:  Image Subtraction
+* 6:  Lightcurve Analysis
+* 7:  Spectroscopy
+* 8: Data Analysis in X-ray Astronomy
+* 9: Radio Astronomy and Data Analysis
+
+Note that the resources from previous GROWTH astronomy schools are also available for downloading from our website. To learn more, visit 
+
+http://growth.caltech.edu/astronomy-school.html
+
+****************************
 
 
 ### Downloading the Modules
